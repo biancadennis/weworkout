@@ -43,15 +43,15 @@ module.exports = function(sequelize, DataTypes) {
         }
       }
     },
-    bio: {
-        type:      DataTypes.TEXT,
-        allowNull: false,
-        validate: {
-            notEmpty: {
-                msg: 'A Bio is required. Tell us a little about yourself.'
-            }
-        }
-	},
+  //   bio: {
+  //       type:      DataTypes.TEXT,
+  //       allowNull: false,
+  //       validate: {
+  //           notEmpty: {
+  //               msg: 'A Bio is required. Tell us a little about yourself.'
+  //           }
+  //       }
+	// },
     password: {
       type:      DataTypes.STRING,
       allowNull: false,
