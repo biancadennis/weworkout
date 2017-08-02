@@ -23,14 +23,17 @@ router.get('/', function(req, res, next) {
   //   nickname: 'asdf'
   // }]);
 });
-// router.get('/:id', function(request, response) {
-//   User.findById(request.params.id).then(function(user) {
-//     Photo.findAll({include: User}).then(function(photos) {
-//       response.render('user/userpage', {
-//         user: user,
-//         // photos: photos
-//       });
-//     });
-//   });
-// });
+router.get('/:id', function(request, response) {
+  User.findById(parseInt(request.params.id)).then(function(user) {
+    // console.log(response.json(user))
+    console.log('user', user)
+    response.json(user)
+  })
+    // Photo.findAll({include: User}).then(function(photos) {
+    //   response.render('user/userpage', {
+    //     user: user,
+    //     // photos: photos
+    //   });
+    // });
+});
 module.exports = router;
