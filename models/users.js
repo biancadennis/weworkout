@@ -70,8 +70,44 @@ module.exports = function(sequelize, DataTypes) {
           msg: 'Name is required'
         }
       }
+    },
+    location: {
+      type:      DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: {
+          msg: 'location is required'
+        }
+      }
+    },
+    fitnesslevel: {
+      type:      DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: {
+          msg: 'fitness is required'
+        }
+      }
+    },
+    gender: {
+      type:      DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: {
+          msg: 'gender is required'
+        }
+      }
+    },
+    goals: {
+      type:      DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: {
+          msg: 'goals are required'
+        }
+      }
     }
-  }, {
+  },{
     classMethods: {
       associate: function(models) {
         models.user.hasMany(models.matches);

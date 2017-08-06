@@ -3,7 +3,7 @@ import {BrowserRouter, Route, Link} from 'react-router-dom'
 import Main from './Main'
 import ProfileList from './ProfileList'
 import Profile from './Profile'
-import Matches from './Matches'
+import Matchlist from './Matchlist'
 import './App.css';
 
 class App extends Component {
@@ -19,7 +19,7 @@ class App extends Component {
           <Route path="/"         component={Main} exact />
           <Route path="/profiles" component={ProfileList} exact />
           <Route path="/profiles/:id" component={Profile} />
-          <Route path="/matches"  component={Matches} />
+          <Route path="/matchlist"  component={Matchlist} />
         </div>
       </BrowserRouter>
     );
