@@ -67,6 +67,16 @@ router.post('/sign-up', function(request, response) {
 	});
 	// response.json({hi: 'bianca'})
 });
+// Log in.
+// router.get('/log-in', function(request, response) {
+// 	response.render('users/log_in')
+// });
+
+router.post('/log-in', passport.authenticate('local'), function(request, response) {
+		console.log('logged in');
+	// response.redirect(`/users/${request.user.id}`);
+		response.json(request.user)
+});
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
