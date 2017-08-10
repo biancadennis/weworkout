@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 
+
 export default class Login extends Component {
     constructor(props) {
 //sets state for new user
@@ -45,8 +46,11 @@ export default class Login extends Component {
     //       console.log('newUser:', newUser)
     //       this.setState({ newUser })
     //   })
-	.then(json => console.log(json))
-	.then(() => {
+	// .then(json => console.log(json))
+	// .then(json => this.setState({ json }))
+	.then(json => {
+		this.setState({ currentUser: json })
+		this.props.history.push('/userpage', this.state)
 		// this.setState({
 		// 	list: true,
 		// })
@@ -100,7 +104,6 @@ render() {
 			<input type="password" name="password" id="password" onChange={this.handleChange}/><br/>
 			<input type="submit" value="Submit"/>s
 		</form>
-		{this.state.list === true ? this.renderList() : null}
         </div>
 	)
 }

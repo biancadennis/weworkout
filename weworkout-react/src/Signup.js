@@ -35,6 +35,12 @@ export default class Signup extends Component {
     //       this.setState({ newUser })
     //   })
 	.then(json => console.log(json))
+	.then(() => {
+		this.props.history.push('/userpage')
+		// this.setState({
+		// 	list: true,
+		// })
+	})
 	  .catch(err => {
 		  console.log('err', err)
 	  })

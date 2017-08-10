@@ -1,7 +1,9 @@
 import React, {Component} from 'react'
+import {Link} from 'react-router-dom'
+import './App.css';
 // import axios from 'axios';
-import Login from './Login';
-import Signup from './Signup'
+// import Login from './Login';
+// import Signup from './Signup'
 
 export default class Main extends Component {
     constructor(props) {
@@ -34,8 +36,12 @@ export default class Main extends Component {
   render() {
     return (
       <div>
-		<Signup />
-		<Login />
+	  		<button>
+            	<Link to="/signup">SignUp</Link>
+			</button>
+			<button>
+            	<Link to="/login">Login</Link>
+			</button>
       </div>
     );
   }
