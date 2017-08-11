@@ -1,12 +1,10 @@
 import React, {Component} from 'react'
+import Matchlist from './Matchlist'
 
 export default class Userpage extends Component {
-    logState = (e) => {
-	console.log(this.props)
-    }
     render(){
         let content
-        const user = this.props.location.state.currentUser
+        const user = this.props.location.state.currentUser  
 
         if (user) {
             content = <div>You are logged in as {user.name} ({user.email}).</div>
@@ -16,9 +14,14 @@ export default class Userpage extends Component {
 
         return (
             <div>
-                 <div onClick = {this.logState} >THIS IS the USER PAGE</div>
-                 {content}
+                 <div>Hi there:{content}
+                 </div>
+                <div>
+                    Here are your Matches:
+                    <Matchlist user={user}/>
+                </div>
             </div>
+            
         )
     }
 } 

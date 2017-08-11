@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-
+//why doesn't this page redirect to userpage with info?
 
 export default class Signup extends Component {
     constructor(props) {
@@ -22,24 +22,16 @@ export default class Signup extends Component {
   handleSubmit = (e) => {
 	  console.log('hi');
 	  e.preventDefault()
-	//   console.log(e.target.value)
-	  console.log(this.state)
     return fetch(`/users/sign-up`, {
 		method: "POST",
 		body: JSON.stringify(this.state),
 		headers: new Headers({ 'Content-Type': 'application/json' })
 	})
 	.then(res => res.json())
-    //   .then(newUser => {
-    //       console.log('newUser:', newUser)
-    //       this.setState({ newUser })
-    //   })
 	.then(json => console.log(json))
-	.then(() => {
-		this.props.history.push('/userpage')
-		// this.setState({
-		// 	list: true,
-		// })
+	.then(json => {
+		this.setState({ currentUser: json })
+		this.props.history.push('/userpage', this.state)
 	})
 	  .catch(err => {
 		  console.log('err', err)

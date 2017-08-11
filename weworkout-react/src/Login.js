@@ -21,16 +21,7 @@ export default class Login extends Component {
 
 //talks to express database to create new user
   handleSubmitLogin = (e) => {
-	  console.log('hi');
 	  e.preventDefault()
-      console.log('hi 2')
-	//   console.log(e.target.value)
-    console.log('hi 3')
-	  console.log('state', this.state)
-      console.log(JSON.stringify({
-            username: this.state.email,
-            password: this.state.password
-        }))
     return fetch(`/users/log-in`, {
 		method: "POST",
         headers: {
@@ -42,27 +33,10 @@ export default class Login extends Component {
         })
 	})
 	.then(res => res.json())
-    //   .then(newUser => {
-    //       console.log('newUser:', newUser)
-    //       this.setState({ newUser })
-    //   })
-	// .then(json => console.log(json))
-	// .then(json => this.setState({ json }))
 	.then(json => {
 		this.setState({ currentUser: json })
 		this.props.history.push('/userpage', this.state)
-		// this.setState({
-		// 	list: true,
-		// })
 	})
-// 	.then(render() {
-//     return (
-//       <div>
-// 		<Signup />
-// 		<Login />
-//       </div>
-//     );
-//   })
 	  .catch(err => {
 		  console.log('err', err)
 	  })
