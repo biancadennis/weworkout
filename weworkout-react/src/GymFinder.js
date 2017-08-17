@@ -16,15 +16,30 @@ export default class GymFinder extends Component {
         }
     }
     displayNearbyGyms = () => {
-        axios.get(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?key=AIzaSyC3s77vg6vfcFYPZw1hL4gK2YASPXQW7YY&location=<${this.state.full_address}>,${this.state.full_address}&radius=1610&type=gym><`)
-            .then((response) => {
-            console.log(response.data.results)
-            this.state.gymList.push(response.data.results)
-            // this.setState({resultsList: this.state.resultsList.pop()})
-        })  
-        .catch(function (error) {
-        console.log(error);
-  })
+        // axios.get(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?key=AIzaSyC3s77vg6vfcFYPZw1hL4gK2YASPXQW7YY&location=<${this.state.full_address}>,${this.state.full_address}&radius=1610&type=gym><`)
+        //     .then((response) => {
+        //     console.log(response.data.results)
+        //     this.state.gymList.push(response.data.results)
+        //     // this.setState({resultsList: this.state.resultsList.pop()})
+        // })  
+        // .catch(function (error) {
+        // console.log(error);
+//   })
+      return fetch(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?key=AIzaSyC3s77vg6vfcFYPZw1hL4gK2YASPXQW7YY&location=${this.state.latitude},${this.state.lng}&radius=1610&type=gym`, {
+		method: "get",
+        // mode:'no-cors',
+        headers: {
+            'Content-Type': 'application/json',
+            // 'Access-Control-Allow-Origin': '*',
+            // 'Access-Control-Allow-Credentials':true,
+            // 'Access-Control-Allow-Methods':'POST, GET'
+        },
+	})
+	.then(res => res.json())
+    .then(json => console.log(json))
+	  .catch(err => {
+		  console.log('err', err)
+	  })
      }
     getCoordinates = (e, result) => {
         this.setState({latitude: e.geometry.location.lat}, function () {
@@ -41,7 +56,7 @@ export default class GymFinder extends Component {
     this.searchAddress()
      }
   searchAddress = (e, searchGym) => {  
-  axios.get(`http://maps.googleapis.com/maps/api/geocode/json?address=<${this.state.full_address}><`)
+  axios.get(`http://maps.googleapis.com/maps/api/geocode/json?address=<${this.state.full_address}>`)
   .then((response) => {
     console.log(response.data.results)
     this.state.resultsList.push(response.data.results)
