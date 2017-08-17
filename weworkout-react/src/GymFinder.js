@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import axios from 'axios'
+
 // import GymResults from './GymResults'
 
 export default class GymFinder extends Component {
@@ -12,10 +13,24 @@ export default class GymFinder extends Component {
             full_address: '',
             latitude: '',
             lng:'',
-            gymList: []
+            gymList: [],
+            gymid: ''
         }
     }
+
+demoMethod = () => {
+   this.props.sendData(this.state.gymid);
+ }
+    getPlaceId = (e, gym) => {
+        this.setState({gymid: e.place_id}, function () {
+            document.getElementById("gymid").value = String(this.state.gymid);
+            this.demoMethod();
+        })
+    
+        
+    }
     displayNearbyGyms = () => {
+        console.log(this.state)
         // axios.get(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?key=AIzaSyC3s77vg6vfcFYPZw1hL4gK2YASPXQW7YY&location=<${this.state.full_address}>,${this.state.full_address}&radius=1610&type=gym><`)
         //     .then((response) => {
         //     console.log(response.data.results)
@@ -36,7 +51,13 @@ export default class GymFinder extends Component {
         },
 	})
 	.then(res => res.json())
-    .then(json => console.log(json))
+    .then((json) => {
+        this.state.gymList.push(json.results)
+        this.setState({gymList: this.state.gymList.pop()})
+        console.log('gyms saved')
+        console.log(this.state)
+    })
+    .then(this.setState({resultsList: []}))
 	  .catch(err => {
 		  console.log('err', err)
 	  })
@@ -75,13 +96,11 @@ export default class GymFinder extends Component {
      }
 
 render() {
-    
-	return (
+    return(
         <div>
-		<h1>
-			This is the GymFinder Component
-		</h1>
-        <form id='gymFinder'>
+		<div>
+			Your Gym address (or an address within one mile)
+		</div>
 			<label>
 				Street address 
 			</label>
@@ -94,19 +113,21 @@ render() {
 				state
 			</label>
 			<input type="text" name="state" id="state" onChange={this.handleChange}/><br/>
-			{/*<label>
-				Password: 
-			</label>
-			<input type="password" name="password" id="password" onChange={this.handleChange}/><br/>*/}
-			<input type="submit" value="Submit"/>s
-		</form>
-        <div>
+        <div id="addresses">
 			Click your location
 			{this.state.resultsList.map(result => <div key={result.place_id} onClick={this.getCoordinates.bind(this, result)}>{result.formatted_address}</div>)}
             {/*{console.log(this.state.lng)}*/}
             
 		</div>
+        <div id='Gyms'>
+			Choose your Gym
+           {this.state.gymList.map(gym => <div key={gym.place_id} onClick={this.getPlaceId.bind(this, gym)}>{gym.name}</div>)}
+        <label>
+				GymID
+			</label>
+			<input type="text" name="gymid" id="gymid"/><br/>
+		</div>
         </div>
-	)
+    )
 }
 }

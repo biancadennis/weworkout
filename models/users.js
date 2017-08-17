@@ -89,6 +89,15 @@ module.exports = function(sequelize, DataTypes) {
         }
       }
     },
+    gymid: {
+      type:      DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: {
+          msg: 'Gym is required'
+        }
+      }
+    },
     gender: {
       type:      DataTypes.STRING,
       allowNull: false,

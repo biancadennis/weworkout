@@ -42,7 +42,7 @@ passport.deserializeUser(function(id, done) {
 router.post('/sign-up', function(request, response) {
 	console.log('request: ', request.body)
 	bcrypt.hash(request.body.password, 10, function(error, password) {
-    console.log("hello");
+    console.log(request.body.gymid);
 		User.create({
 			email:    request.body.email,
 			password: password,
@@ -51,7 +51,8 @@ router.post('/sign-up', function(request, response) {
       fitnesslevel: request.body.fitnesslevel,
       gender: request.body.gender,
 			goals: request.body.goals,
-      username: request.body.username
+      username: request.body.username,
+			gymid: request.body.gymid
 		}).then(function(user) {
 			console.log('user:', user)
 			request.login(user, function(error) {

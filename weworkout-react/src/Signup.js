@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import GymFinder from './GymFinder'
 //why doesn't this page redirect to userpage with info?
 
 export default class Signup extends Component {
@@ -14,7 +15,7 @@ export default class Signup extends Component {
 			password: '',
 			location: '',
 			goals: '',
-			gym: ''
+			gymid: ''
 		}
     }
 
@@ -43,6 +44,11 @@ export default class Signup extends Component {
 		[e.target.id]: e.target.value
 	})
   }
+getData = (val) => {
+    this.setState({gymid: val})
+    console.log(val);
+}
+
 render() {
     return (
         <div>
@@ -78,6 +84,9 @@ render() {
 			<input type="radio" id="goals" name="goals" value="loss" onChange={this.handleChange}/> loss
   			<input type="radio" id="goals" name="goals" value="gain" onChange={this.handleChange}/> gain
   			<input type="radio" id="goals" name="goals" value="maintain" onChange={this.handleChange}/> maintain <br/>
+
+			<GymFinder sendData={this.getData}/>
+
 			<label>
 				Username: 
 			</label>
