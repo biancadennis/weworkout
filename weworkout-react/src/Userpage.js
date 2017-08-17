@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import Matchlist from './Matchlist'
+import GymFinder from './GymFinder'
 
 export default class Userpage extends Component {
     render(){
@@ -14,6 +15,9 @@ export default class Userpage extends Component {
 
         return (
             <div>
+                <div>
+                    Here is your gym <GymFinder/>
+                </div>
                  <div>Hi there:{content}
                  </div>
                 <div>
