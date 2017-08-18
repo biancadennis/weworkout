@@ -113,20 +113,21 @@ render() {
 				state
 			</label>
 			<input type="text" name="state" id="state" onChange={this.handleChange}/><br/>
-        <div id="addresses">
+             <div id="addresses">
 			Click your location
 			{this.state.resultsList.map(result => <div key={result.place_id} onClick={this.getCoordinates.bind(this, result)}>{result.formatted_address}</div>)}
             {/*{console.log(this.state.lng)}*/}
             
 		</div>
-        <div id='Gyms'>
+             <div id='Gyms'>
 			Choose your Gym
            {this.state.gymList.map(gym => <div key={gym.place_id} onClick={this.getPlaceId.bind(this, gym)}>{gym.name}</div>)}
-        <label>
+           		</div>
+             <label>
 				GymID
 			</label>
 			<input type="text" name="gymid" id="gymid"/><br/>
-		</div>
+
         </div>
     )
 }

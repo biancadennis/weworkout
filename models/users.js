@@ -71,15 +71,6 @@ module.exports = function(sequelize, DataTypes) {
         }
       }
     },
-    location: {
-      type:      DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        notEmpty: {
-          msg: 'location is required'
-        }
-      }
-    },
     fitnesslevel: {
       type:      DataTypes.STRING,
       allowNull: false,
@@ -95,6 +86,15 @@ module.exports = function(sequelize, DataTypes) {
       validate: {
         notEmpty: {
           msg: 'Gym is required'
+        }
+      }
+    },
+    photourl: {
+      type:      DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: {
+          msg: 'URL is required'
         }
       }
     },

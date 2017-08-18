@@ -35,14 +35,19 @@ export default class Main extends Component {
 	// }
   render() {
     return (
-      <div>
-	  		<button>
-            	<Link to="/signup">SignUp</Link>
-			</button>
-			<button>
-            	<Link to="/login">Login</Link>
-			</button>
+			<div>
+								<h1>
+					Welcome to WeWorkOut!
+				</h1>
+      <div className="logging">
+	  		<div className="getIn">
+            	<Link className="navLinks" to="/signup">SignUp</Link>
+			</div>
+			<div className="getIn">
+            	<Link className="navLinks" to="/login">Login</Link>
+			</div>
       </div>
+			</div>
     );
   }
 }

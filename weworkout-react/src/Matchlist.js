@@ -27,15 +27,15 @@ export default class Matchlist extends Component {
 		// } else {
         //     matchedUser = <div>You are not logged in.</div>
         // }
-		const Users = this.state.Users
+		let Users = this.state.Users
 		const currentlyLoggedUser = this.props.user
 		let matchedUsers = []
 		return (
 			<div>
-				<div>
+				<div className="matchContainer">
 				{/*{Users.map(user => <MatchListItem key={user.id} {...user}/> )}*/}
 				{Users.forEach(function(userListItem){
-					if (userListItem.gender === currentlyLoggedUser.gender) {
+					if ((userListItem.gymid === currentlyLoggedUser.gymid) && (userListItem.name !== currentlyLoggedUser.name) ){
 						matchedUsers.push(userListItem)
 					}
 				})

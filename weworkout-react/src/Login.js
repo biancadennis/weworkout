@@ -76,7 +76,7 @@ render() {
 				Password: 
 			</label>
 			<input type="password" name="password" id="password" onChange={this.handleChange}/><br/>
-			<input type="submit" value="Submit"/>s
+			<input type="submit" value="Submit"/>
 		</form>
         </div>
 	)

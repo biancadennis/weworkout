@@ -17,9 +17,10 @@ class App extends Component {
       <BrowserRouter history={history}>
         <div>
           <nav>
-            <Link to="/">Main</Link>
-            <Link to="/profiles">Profiles</Link>
-            <Link to="/matches">Matches</Link>
+            <Link className='navLinks' to="/">Home</Link>
+            <Link className='navLinks' to="/">WeWorkOut</Link>
+            <Link className='navLinks' to="/">Logout</Link>
+
           </nav>
           <Route path="/"               component={Main} exact />
           <Route path="/profiles"       component={ProfileList} exact />

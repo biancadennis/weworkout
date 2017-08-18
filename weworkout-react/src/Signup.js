@@ -13,9 +13,9 @@ export default class Signup extends Component {
 			gender: '',
 			username: '',
 			password: '',
-			location: '',
 			goals: '',
-			gymid: ''
+			gymid: '',
+			photourl: ''
 		}
     }
 
@@ -29,10 +29,9 @@ export default class Signup extends Component {
 		headers: new Headers({ 'Content-Type': 'application/json' })
 	})
 	.then(res => res.json())
-	.then(json => console.log(json))
 	.then(json => {
 		this.setState({ currentUser: json })
-		this.props.history.push('/userpage', this.state)
+		this.props.history.push('/login', this.state)
 	})
 	  .catch(err => {
 		  console.log('err', err)
@@ -63,9 +62,9 @@ render() {
 			</label>
 			<input type="text" name="email" id="email" onChange={this.handleChange}/><br/>
 			<label>
-				location: 
+				PhotoURL 
 			</label>
-			<input type="text" name="location" id="location" onChange={this.handleChange}/><br/>
+			<input type="text" name="photourl" id="photourl" onChange={this.handleChange}/><br/>
 			<label>
 				Gender:
 			</label>
@@ -81,7 +80,7 @@ render() {
 			<label>
 				Goals:
 			</label>
-			<input type="radio" id="goals" name="goals" value="loss" onChange={this.handleChange}/> loss
+			<input type="radio" id="goals" name="goals" value="lose" onChange={this.handleChange}/> lose
   			<input type="radio" id="goals" name="goals" value="gain" onChange={this.handleChange}/> gain
   			<input type="radio" id="goals" name="goals" value="maintain" onChange={this.handleChange}/> maintain <br/>
 

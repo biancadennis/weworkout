@@ -9,10 +9,6 @@ module.exports = {
         autoIncrement: true,
         allowNull:     false
       },
-      location: {
-        type:          Sequelize.STRING,
-        allowNull:     false
-      },
       email: {
         type:      Sequelize.STRING,
         allowNull: false
@@ -42,6 +38,10 @@ module.exports = {
         allowNull: false
       },
       gymid: {
+        type:      Sequelize.STRING,
+        allowNull: false
+      },
+      photourl: {
         type:      Sequelize.STRING,
         allowNull: false
       },

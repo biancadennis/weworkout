@@ -46,13 +46,13 @@ router.post('/sign-up', function(request, response) {
 		User.create({
 			email:    request.body.email,
 			password: password,
-			location: request.body.location,
 			name:     request.body.name,
       fitnesslevel: request.body.fitnesslevel,
       gender: request.body.gender,
 			goals: request.body.goals,
       username: request.body.username,
-			gymid: request.body.gymid
+			gymid: request.body.gymid,
+			photourl: request.body.photourl
 		}).then(function(user) {
 			console.log('user:', user)
 			request.login(user, function(error) {
